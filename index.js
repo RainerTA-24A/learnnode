@@ -1,8 +1,3 @@
-console.log("Hello via Bun!");
+import fs from 'fs'; //fs = filesystem
 
-//const common = require('./common.js');
-import common from './common.js'
-common.hello();
-
-import es from './es.js';
-es.hello();
+fs.writeFileSync('test.txt', 'Hello file!');
