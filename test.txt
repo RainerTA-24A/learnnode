@@ -1,1 +1,3 @@
-Hello file!
+Emmet Abbreviation:
+
+ul#test>li.klass$*5>{testing $} // Teeb id, listitem klassi klass korrutab 5-ga ...
