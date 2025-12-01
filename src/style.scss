@@ -1,0 +1,11 @@
+@use "sass:color";
+$bgcolor: coral;
+
+body {
+    background: color.scale($bgcolor, $lightness: 30%);
+}
+
+.lom{
+    font-size: xx-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
