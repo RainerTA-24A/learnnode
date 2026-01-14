@@ -1,9 +1,6 @@
-@use "sass:color";
-$bgcolor: coral;
-
-body {
-    background: color.scale($bgcolor, $lightness: 30%);
-}
+@use "bulma/sass" with (
+    $primary: coral
+);
 
 .lom{
     font-size: xx-large;
