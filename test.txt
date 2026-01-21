@@ -12,3 +12,10 @@ bun run dev --> paneb siis serveri tööle
   <!--   <input/>   ise sulgev tag-->
      <!--  <input class="input" :value="message" @input="message = $event.target.value">   v-on:input="input" siis peaks seda function input(event) kasutama-->	 
     <!--   <input class="input" v-bind:value="message" v-on:change="console.log('change')" placeholder="change"> -->
+
+
+    let doneItems = computed(() => {
+    return items.filter(i => {
+        return i.isDone;
+    });
+});
