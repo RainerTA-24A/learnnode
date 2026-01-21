@@ -1,8 +1,15 @@
 @use "bulma/sass" with (
-    $primary: coral
+  $primary: coral
 );
 
-.lom{
-    font-size: xx-large;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color:lightsteelblue
+}
+
+.lom {
+  font-size: xx-large;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
