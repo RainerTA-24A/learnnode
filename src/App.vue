@@ -1,21 +1,38 @@
 <script setup>
 import { ref } from 'vue';
+let items = ref(['Sai', 'Maan', 'Rohke', 'Õlu']);
+let newItem = ref('');
 
-let message = ref('Hello Vue!');
-
+function add(){
+    if(newItem.value.trim() !== '' ){
+        items.value.push(newItem.value);
+    }
+    newItem.value = '';
+}
 
 </script>
 
 <template>
     <div class="container">
-    <h1>{{ message.split('').reverse().join('') }}</h1>
-    <button class="button is-primary" @click=" message = 'This ez'">Click me</button> <!-- v-on: asemel @-->
-    <!--   <input/>   ise sulgev tag-->
-
-    <input class="input" v-model="message">
+        <div class="field has-addons mt-2">
+            <div class="control is-expanded">
+                <input class="input" type="text" v-model="newItem" @keypress.enter="add" placeholder="Add to items list">
+            </div>
+            <div class="control">
+                <button class="button is-info" @click="add">
+                    Add item
+                </button>
+            </div>
+        </div>
+        <div class="content">
+            <h1>All items</h1>
+            <ul>
+            <li v-for="item in items">{{ item }}</li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <style>
 
-</style>
+</style>    
