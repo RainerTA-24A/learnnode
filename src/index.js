@@ -1,15 +1,17 @@
-import { createApp } from 'vue';
+import { createApp } from "vue";
 
-import { createMemoryHistory, createWebHashHistory, createWebHistory, createRouter } from 'vue-router';
+import { createWebHistory, createRouter } from "vue-router";
 
-import ToDo from './pages/ToDo.vue';
-import Modals from './pages/Modals.vue';
-import Messages from './pages/Messages.vue';
+import ToDo from "./pages/ToDo.vue";
+import Modals from "./pages/Modals.vue";
+import Messages from "./pages/Messages.vue";
+import Buttons from "./pages/Buttons.vue";
 
 const routes = [
-  { path: '/', component: ToDo, name: 'ToDo_67' },
-  { path: '/modals', component: Modals, name: 'Modals_laud' },
-  { path: '/messages', component: Messages, name: 'Messages' },
+  { path: "/", component: ToDo, name: "ToDo_67" },
+  { path: "/modals", component: Modals, name: "Modals_laud" },
+  { path: "/messages", component: Messages, name: "Messages" },
+  { path: "/buttons", component: Buttons, name: "Buttons" },
 ];
 
 export const router = createRouter({
@@ -18,9 +20,9 @@ export const router = createRouter({
 });
 
 // import the root component App from a single-file component.
-import App from './App.vue';
-import './style.scss'
+import App from "./App.vue";
+import "./style.scss";
 
 const app = createApp(App);
 app.use(router);
-app.mount('#app');
+app.mount("#app");
