@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^6.0.3",
+    "axios": "^1.13.6",
     "boxen": "^8.0.1",
     "bulma": "^1.0.4",
     "vue": "^3.5.27",
