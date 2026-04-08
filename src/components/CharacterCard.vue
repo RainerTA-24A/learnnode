@@ -14,6 +14,10 @@ defineProps(['character']);
         </div>
         <div class="card-content">
             <div class="content">
+                <div class="tags mb-3">
+                    <span class="tag is-link is-light">Status: {{ character.status }}</span>
+                    <span class="tag is-primary is-light">Gender: {{ character.gender }}</span>
+                </div>
                 <table>
                     <tbody>
                         <tr>
