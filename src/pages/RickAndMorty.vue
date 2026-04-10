@@ -15,6 +15,7 @@ let current = ref(1);
 
 let searchInput = ref('');
 let isLoading = ref(false);
+let activeRequestId = 0;
 const filters = reactive({
     status: '',
     gender: '',
@@ -40,22 +41,39 @@ await getCharacters(current.value);
 async function getCharacters(page) {
     current.value = page;
     isLoading.value = true;
+    const requestId = ++activeRequestId;
 
     try {
-        let res = await axios.get('https://rickandmortyapi.com/api/character', {
-            params: {
-                page: page,
-                name: searchInput.value,
-                status: filters.status,
-                gender: filters.gender,
-            }
-        });
+        const params = new URLSearchParams();
+        params.set('page', String(page));
+
+        if (searchInput.value.trim()) {
+            params.set('name', searchInput.value.trim());
+        }
+
+        if (filters.status) {
+            params.set('status', filters.status);
+        }
+
+        if (filters.gender) {
+            params.set('gender', filters.gender);
+        }
+
+        let res = await axios.get(`https://rickandmortyapi.com/api/character/?${params.toString()}`);
+
+        if (requestId !== activeRequestId) {
+            return;
+        }
 
         characters.value = res.data.results;
         pagination.value = res.data.info;
     } catch (error) {
         // The API returns 404 when no result matches filters/search.
         if (error.response && error.response.status === 404) {
+            if (requestId !== activeRequestId) {
+                return;
+            }
+
             characters.value = [];
             pagination.value = {
                 count: 0,
@@ -69,7 +87,9 @@ async function getCharacters(page) {
 
         throw error;
     } finally {
-        isLoading.value = false;
+        if (requestId === activeRequestId) {
+            isLoading.value = false;
+        }
     }
 }
 
