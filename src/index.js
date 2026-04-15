@@ -8,6 +8,7 @@ import Messages from "./pages/Messages.vue";
 import Buttons from "./pages/Buttons.vue";
 import ChuckNorris from "./pages/ChuckNorris.vue";
 import RickAndMorty from "./pages/RickAndMorty.vue";
+import CanvasExample from "./pages/CanvasExample.vue";
 
 const routes = [
   { path: "/", component: ToDo, name: "ToDo_67" },
@@ -16,6 +17,7 @@ const routes = [
   { path: "/buttons", component: Buttons, name: "Buttons" },
   { path: "/chuck", component: ChuckNorris, name: 'Chuck Norris' },
   { path: "/rickandmorty", component: RickAndMorty, name: 'Rick and Morty' },
+  { path: "/canvas", component: CanvasExample, name: 'Canvas' },
 ];
 
 export const router = createRouter({

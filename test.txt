@@ -21,3 +21,12 @@ bun run dev --> paneb siis serveri tööle
         return i.isDone;
     });
 });
+
+
+<script setup>
+
+</script>
+
+<template>
+
+</template>
