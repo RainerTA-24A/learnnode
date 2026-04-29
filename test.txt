@@ -22,6 +22,8 @@ bun run dev --> paneb siis serveri tööle
     });
 });
 
+mordifool.surge.sh
+
 
 <script setup>
 
@@ -30,3 +32,5 @@ bun run dev --> paneb siis serveri tööle
 <template>
 
 </template>
+
+
