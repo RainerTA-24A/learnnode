@@ -11,17 +11,19 @@ import RickAndMorty from "./pages/RickAndMorty.vue";
 import CanvasExample from "./pages/CanvasExample.vue";
 import WebApis from "./pages/WebApis.vue";
 import Leaflet from "./pages/Leaflet.vue";
+import Chat from "./pages/chat.vue";
 
 const routes = [
   { path: "/", component: ToDo, name: "ToDo_67" },
   { path: "/modals", component: Modals, name: "Modals_laud" },
   { path: "/messages", component: Messages, name: "Messages" },
   { path: "/buttons", component: Buttons, name: "Buttons" },
-  { path: "/chuck", component: ChuckNorris, name: 'Chuck Norris' },
-  { path: "/rickandmorty", component: RickAndMorty, name: 'Rick and Morty' },
-  { path: "/canvas", component: CanvasExample, name: 'Canvas' },
-  { path: "/webapis", component: WebApis, name: 'WebApis' },
-  { path: "/leaflet", component: Leaflet, name: 'Leaflet' },
+  { path: "/chuck", component: ChuckNorris, name: "Chuck Norris" },
+  { path: "/rickandmorty", component: RickAndMorty, name: "Rick and Morty" },
+  { path: "/canvas", component: CanvasExample, name: "Canvas" },
+  { path: "/webapis", component: WebApis, name: "WebApis" },
+  { path: "/leaflet", component: Leaflet, name: "Leaflet" },
+  { path: "/chat", component: Chat, name: "Chat" },
 ];
 
 export const router = createRouter({
