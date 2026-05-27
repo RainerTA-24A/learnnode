@@ -15,22 +15,30 @@ let message = ref('');
 function joinChat() {
     nameSet.value = true;
     setInterval(() => {
-        axios.get('http://localhost:5000/api/messages').then(res => {
-            messages.value = res.data.map(m => ({ ...m, isMe: m.name === name.value }));
+         let params = {};
+        if (messages.value.length !== 0) {
+            params.date = new Date(messages.value[messages.value.length - 1].created).toISOString();
+        }
+
+        axios.get('http://localhost:5000/api/messages', {
+            params: params
+        }).then(res => {
+            messages.value.push(...res.data.map(m => ({ ...m, isMe: m.name === name.value })));
         });
     }, 1000);
     axios.get('http://localhost:5000/api/messages').then(res => {
-        messages.value = res.data.map(m => ({ ...m, isMe: m.name === name.value }));
+        messages.value.push(...res.data.map(m => ({ ...m, isMe: m.name === name.value })));
     });
 }
 
 function send() {
-    messages.value.push({
-        id: messages.value.length + 1,
-        text: message.value,
-        isMe: true,
-        name: name.value,
-    });
+    // messages.value.push({
+    //     id: messages.value.length + 1,
+    //     text: message.value,
+    //     isMe: true,
+    //     name: name.value,
+    //     created: new Date().toISOString(),
+    // });
     axios.post('http://localhost:5000/api/messages', {
         text: message.value,
         name: name.value,

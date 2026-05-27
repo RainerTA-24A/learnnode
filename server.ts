@@ -19,7 +19,11 @@ const server = Bun.serve({
                 return new Response(null, { headers: headers });
             },
             GET: async req => {
-                return Response.json(messages, { headers: headers });
+                const url = new URL(req.url);
+                const date = url.searchParams.get("date") ?? new Date(0).toISOString();
+                let dateObj = new Date(date);
+                let filteredMessages = messages.filter(m => new Date(m.created) > dateObj);
+                return Response.json(filteredMessages, { headers: headers });
             },
             POST: async req => {
                 let data = await req.json();
