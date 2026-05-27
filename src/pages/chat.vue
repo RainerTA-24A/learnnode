@@ -12,23 +12,29 @@ let messages = ref([
 ]);
 let message = ref('');
 
-function joinChat() {
+async function joinChat() {
     nameSet.value = true;
-    setInterval(() => {
+        
+    axios.get('http://localhost:5000/api/messages').then(res => {
+        messages.value.push(...res.data.map(m => ({ ...m, isMe: m.name === name.value })));
+    });
+    while (true) {
          let params = {};
         if (messages.value.length !== 0) {
             params.date = new Date(messages.value[messages.value.length - 1].created).toISOString();
         }
 
-        axios.get('http://localhost:5000/api/messages', {
-            params: params
-        }).then(res => {
+         try {   
+            let res = await axios.get('http://localhost:5000/api/messages', {
+                params: params
+            })
             messages.value.push(...res.data.map(m => ({ ...m, isMe: m.name === name.value })));
-        });
-    }, 1000);
-    axios.get('http://localhost:5000/api/messages').then(res => {
-        messages.value.push(...res.data.map(m => ({ ...m, isMe: m.name === name.value })));
-    });
+        } catch (e) {
+           
+            continue;
+        }
+       
+    }
 }
 
 function send() {
